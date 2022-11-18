@@ -7,82 +7,205 @@
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>Eskom Calendar</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/13.0.1/markdown-it.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/hyphenopoly/4.12.0/Hyphenopoly_Loader.min.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css" />
-<style>
-  ul{
- -webkit-column-count: 3;
- -moz-column-count: 3;
- -o-column-count: 3;
-  column-count: 3; 
-} 
-</style>
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.10/dist/clipboard.min.js"></script>
+  <style>
+    @media (min-width: 576px)
+    {
+        ul.cols-3 {
+        -webkit-column-count: 1;
+        -moz-column-count: 1;
+        -o-column-count: 1;
+        column-count: 1;
+      }
+    }
+
+    @media (min-width: 768px)
+    {
+        ul.cols-3 {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        -o-column-count: 2;
+        column-count: 2;
+      }
+    }
+
+    @media (min-width: 992px)
+    {
+        ul.cols-3 {
+        -webkit-column-count: 3;
+        -moz-column-count: 3;
+        -o-column-count: 3;
+        column-count: 3;
+      }
+    }
+    
+
+    a {
+    color: #0f4dd9;
+    background-color: transparent;
+}
+    .accordion .card {
+    margin-bottom: -1px;
+  }
+  .accordion .card .card-header{
+    padding: 0.25rem!important;
+    background-color: white;
+    cursor: pointer;
+  }
+  .accordion .card .card-header:hover{
+    background-color: aliceblue;
+  }
+  .accordion .card .card-header[aria-expanded="true"],
+  .accordion .card .card-header[aria-expanded="true"] + .card-body {
+    background-color: #d7e2f163;
+  }
+
+  .list-group-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    align-items: center;
+}
+
+  .text-small{
+    font-size: 11px;
+  }
+
+  .btn:hover {
+    color: #36b5ff!important
+  }
+
+  .list-group-item .btn svg {
+    margin-top: -4px;
+}
+
+.tooltip-inner {
+    padding: 0.1rem 0.4rem;
+    font-size: 11px;
+}
+
+.vertical-align-middle {
+  vertical-align: middle !important;
+}
+
+  </style>
 </head>
 
 <body class="bg-light">
-  <a class="github-fork-ribbon" href="https://github.com/beyarkay/eskom-calendar" data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Fork me on GitHub</a>
+  <a class="github-fork-ribbon" href="https://github.com/beyarkay/eskom-calendar" data-ribbon="Fork me on GitHub"
+    title="Fork me on GitHub">Fork me on GitHub</a>
   <div class="container">
     <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar w/ text</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="container-fluid pl-1">
+        <a class="navbar-brand" href="#">Eskom Calendar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+          aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
+            <li class="nav-item d-none">
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item d-none">
               <a class="nav-link" href="#">Features</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item d-none">
               <a class="nav-link" href="#">Pricing</a>
             </li>
           </ul>
-          <span class="navbar-text">
+          <span class="navbar-text d-none">
             Navbar text with an inline element
           </span>
         </div>
       </div>
     </nav>
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Eskom Calendar</h5><span>by</span>&nbsp<span><a href="https://github.com/beyarkay">Boyd Kane</a></span>
-        <p class="card-text">Loadshedding schedules in your digital calendar. No ads, up-to-date, and developer friendly.</p>
+    <div class="card mb-4">
+      <div class="card-body pt-1">
+        <h5 class="card-title d-none">Eskom Calendar</h5><span>by</span>&nbsp<span><a href="https://github.com/beyarkay">Boyd
+            Kane</a></span>
+        <p class="card-text">Loadshedding schedules in your digital calendar. No ads, up-to-date, and developer
+          friendly.</p>
         <p class="card-text"><small class="text-muted">Last updated <span id="last-updated"></span></small></p>
-        <img src="https://badgen.net/github/license/beyarkay/eskom-calendar?color=orange&cache=600" alt="license" style="max-width: 100%;">
-        <img src="https://badgen.net/github/assets-dl/beyarkay/eskom-calendar?color=green" alt="downloads" style="max-width: 100%;">
-        <img src="https://badgen.net/github/stars/beyarkay/eskom-calendar?color=yellow" alt="stars" style="max-width: 100%;">
-        <img src="https://badgen.net/github/watchers/beyarkay/eskom-calendar?color=cyan" alt="stars" style="max-width: 100%;">
-        <img src="https://badgen.net/github/forks/beyarkay/eskom-calendar?color=purple" alt="stars" style="max-width: 100%;">
+        <img src="https://badgen.net/github/license/beyarkay/eskom-calendar?color=orange&cache=600" alt="license"
+          style="max-width: 100%;">
+        <img src="https://badgen.net/github/assets-dl/beyarkay/eskom-calendar?color=green" alt="downloads"
+          style="max-width: 100%;">
+        <img src="https://badgen.net/github/stars/beyarkay/eskom-calendar?color=yellow" alt="stars"
+          style="max-width: 100%;">
+        <img src="https://badgen.net/github/watchers/beyarkay/eskom-calendar?color=cyan" alt="stars"
+          style="max-width: 100%;">
+        <img src="https://badgen.net/github/forks/beyarkay/eskom-calendar?color=purple" alt="stars"
+          style="max-width: 100%;">
       </div>
-      <!-- <img src="https://github.com/beyarkay/eskom-calendar/releases/download/builds/calendar_preview.png" class="card-img-bottom" alt="..."> -->
     </div>
-
-    <!-- <div class="card mb-3">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <div class="card-body">
-            <h5 class="card-title mb-0">Eskom Calendar</h5><span>by</span>&nbsp<span><a href="https://github.com/beyarkay">Boyd Kane</a></span>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-        </div>
-        <div class="col-md-7">
-          <img src="https://github.com/beyarkay/eskom-calendar/releases/download/builds/calendar_preview.png" class="img-fluid rounded-start" alt="...">
-        </div>
-      </div>
-    </div> -->
     <div class="text-center" id="spinner">
       <div class="spinner-border" role="status">
         <span class="visually-hidden">Loading...</span>
       </div>
     </div>
-    <div class="accordion" id="calendar-accordion">
+    <div class="card mb-5">
+      <div class="card-body">
+        <h5 class="card-title">Downloads</h5>
+        <p>
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            How do I use this?
+          </button>
+        </p>
+        <div class="collapse" id="collapseExample">
+          <div class="card card-body mb-4">
+            <p class="card-text">To get your load shedding schedule in your calendar:</p>
+            <ul>
+              <li>Expand your province's section by clicking on it.<br>
+                <small><i>City of Cape Town and City Power have their own sections</i></small></li>
+              <li>Find the ics calendar file corresponding to your area.</li>
+              <li>Click the icon of the action you want to perform:
+                <ul>
+                  <li>Click
+                    <span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/></svg>
+                    </span> to download the .ics file
+                  </li>
+                  <li>Click
+                    <span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-files" viewBox="0 0 16 16"><path d="M13 0H6a2 2 0 0 0-2 2 2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 13V4a2 2 0 0 0-2-2H5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1zM3 4a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4z"/></svg>
+                    </span> to copy the link to the .ics file<br>
+                    <small class="text-muted">You will need this to subscribe to a calendar using:</small> 
+                    <ul>
+                      <li><small><a href="https://calendar.google.com/calendar/u/0/r/settings/addbyurl">Google Calendar</a></small></li>
+                      <li><small><a href="https://outlook.office.com/calendar/addcalendar">Outlook</a> </small></li>
+                      <li><small><a href="https://support.apple.com/en-za/guide/calendar/icl1022/mac">Apple Calendar</a></small></li>
+                    </ul>
+                  </li>
+                  <li>Click
+                    <span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-plus" viewBox="0 0 16 16">   <path d="M8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5A.5.5 0 0 1 8 7z"/>   <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/> </svg>
+                    </span> to open the file using your favorite calendar app
+                  </li>
+                </ul>
+    
+              </li>
+            </ul>
+            <p>Please see the <a href="https://github.com/beyarkay/eskom-calendar/releases">releases</a> page for detailed screenshots.</p>
+          </div>
+        </div>
+
+        <div class="accordion" id="calendar-accordion">
+        </div>
+      </div>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
@@ -90,13 +213,15 @@
     crossorigin="anonymous"></script>
   <script>
 
-    var dict = {
-      'city-of-cape-town' : {
+ 
+(function ($) {
+  var dict = {
+      'city-of-cape-town': {
         'display_name': 'City of Cape Town',
         'province': 'western-cape',
         'areas': []
       },
-      'city-power' : {
+      'city-power': {
         'display_name': 'City Power',
         'province': 'gauteng',
         'areas': []
@@ -111,7 +236,7 @@
         'province': 'free-state',
         'areas': []
       },
-      'gauteng-ekurhuleni': { 
+      'gauteng-ekurhuleni': {
         'display_name': 'Gauteng (Ekurhuleni)',
         'province': 'gauteng',
         'areas': []
@@ -122,7 +247,7 @@
         'areas': []
       },
       'kwazulu-natal': {
-        'display_name' : 'KwaZulu-Natal',
+        'display_name': 'KwaZulu-Natal',
         'province': 'kwazulu-natal',
         'areas': []
       },
@@ -153,58 +278,157 @@
       }
     }
     $(document).ready(function () {
-      var md = markdownit();
+      // var md = markdownit();
       $.ajax({
-      type: "GET",
-      url: "https://api.github.com/repos/beyarkay/eskom-calendar/releases/latest",//https://github.com/beyarkay/eskom-calendar/releases/tag/latest
-      dataType: "json",
-      headers: {
-      "Accept": "application/json",
-      "Content-Type": "application/json",
-    },
-      success: function (result) {
-        var assets = $.map(result.assets, function(e) { return  { name: e.name, url: e.browser_download_url, size: e.size, downloads: e.download_count}});
-        console.log("tag name: " + result.tag_name);
-        console.log("tag created at: " + result.created_at);
-        console.log("tag published at: " + result.published_at);
-        var parsed = md.parse(result.body);
-        $('#last-updated').html(moment(result.created_at).fromNow());
-        $.each(dict, function(key, index) {
-          dict[key].areas = assets.filter(function(asset, i) {
-            return asset.name.indexOf(key) == 0;
-          })
-          $('#calendar-accordion').append(
-            $('<div>').addClass('accordion-item').append(
-              $('<h2>').addClass('accordion-header').attr('id', key + '_heading').append(
-                $('<button>').addClass('accordion-button collapsed')
-                            .attr('type', 'button')
-                            .attr('data-bs-toggle', 'collapse')
-                            .attr('data-bs-target', '#' + key + '_collapse')
-                            .attr('aria-controls', key + '_collapse')
-                            .attr('aria-expanded', 'false')
-                            .html(dict[key].display_name))
-                ).append(
-                  $('<div>').addClass('accordion-collapse collapse')
-                    .attr('id', key + '_collapse')
-                    .attr('data-bs-parent', '#calendar-accordion')
-                    .attr('aria-labelledby', key + '_heading')
+        type: "GET",
+        url: "https://api.github.com/repos/beyarkay/eskom-calendar/releases/latest",
+        dataType: "json",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+        },
+        success: function (result) {
+          var assets = $.map(result.assets, function (e) { return { name: e.name, url: e.browser_download_url, size: e.size, downloads: e.download_count } });
+          // console.log("tag name: " + result.tag_name);
+          // console.log("tag created at: " + result.created_at);
+          // console.log("tag published at: " + result.published_at);
+          // var parsed = md.parse(result.body);
+          $('#last-updated').html(moment(result.created_at).fromNow());
+
+          // For Bootstrap 5
+          // $.each(dict, function (key, index) {
+          //   dict[key].areas = assets.filter(function (asset, i) {
+          //     return asset.name.indexOf(key) == 0;
+          //   })
+          //   $('#calendar-accordion').append(
+          //     $('<div>').addClass('accordion-item').append(
+          //       $('<h2>').addClass('accordion-header').attr('id', key + '_heading').append(
+          //         $('<button>').addClass('accordion-button collapsed')
+          //           .attr('type', 'button')
+          //           .attr('data-bs-toggle', 'collapse')
+          //           .attr('data-bs-target', '#' + key + '_collapse')
+          //           .attr('aria-controls', key + '_collapse')
+          //           .attr('aria-expanded', 'false')
+          //           .html(dict[key].display_name))
+          //     ).append(
+          //       $('<div>').addClass('accordion-collapse collapse')
+          //         .attr('id', key + '_collapse')
+          //         .attr('data-bs-parent', '#calendar-accordion')
+          //         .attr('aria-labelledby', key + '_heading')
+          //         .append(
+          //           $('<div>').addClass('accordion-body')
+          //             .append($('<ul>')
+          //               .append(
+          //                 $.map(dict[key].areas, function (a, area) {
+          //                   return $('<li>').append($('<a>').attr('href', a.url).html((a.name.replace(key, '')).replace(/-/g, ' ').trim()))
+          //                 })
+          //               ))
+          //         )
+          //     ))
+          // })
+
+          $.each(dict, function (key, index) {
+            dict[key].areas = assets.filter(function (asset, i) {
+              return asset.name.indexOf(key) == 0;
+            });
+            dict[key].areas.sort(sortByNumber);
+            $('#calendar-accordion').append(
+              $('<div>').addClass('card').append(
+                $('<div>').addClass('card-header').attr('id', key + '_heading')
+                  .attr('data-toggle', 'collapse')
+                    .attr('data-target', '#' + key + '_collapse')
+                    .attr('aria-controls', key + '_collapse')
+                    .attr('aria-expanded', 'false')
                     .append(
+                $('<h6>').addClass('mb-0').append(
+                  $('<button>').addClass('btn btn-link collapsed text-dark')
+                    .attr('type', 'button')
+                    .html(dict[key].display_name)).append($('<span>').addClass('badge badge-pill badge-secondary vertical-align-middle').html(dict[key].areas.length))
+              )).append(
+                $('<div>').addClass('card-body collapse')
+                  .attr('id', key + '_collapse')
+                  .attr('data-parent', '#calendar-accordion')
+                  .attr('aria-labelledby', key + '_heading')
+                  .append(
                     $('<div>').addClass('accordion-body')
-                      .append($('<ul>')
-                      .append(
-                        $.map(dict[key].areas, function(a, area) {
-                          // return $('<li>').append($('<a>').attr('href', a.url).html((a.name.replace(key, '')).replace(/-/g,' ').replace('.ics', '').trim())).append($('<span>').addClass('badge bg-info ms-2').html(a.downloads))
-                          return $('<li>').append($('<a>').attr('href', a.url).html((a.name.replace(key, '')).replace(/-/g,' ').trim()))
-                        })
-                      ))
+                      .append($('<ul>').addClass('list-group d-block list-style-none cols-3')
+                        .append(
+                          $.map(dict[key].areas, function (a, area) {
+                            return $('<li>').addClass('list-group-item list-group-item-action py-1 px-3')
+                              .append($('<a>').attr('href', a.url).html((a.name.replace(key, '')).replace(/-/g, ' ').trim()))
+                                .append($('<span>').addClass('detail-group')
+                                .append($('<span>').addClass('text-muted mr-1 text-small mr-3').html((a.size / 1024).toFixed(2) + ' KB'))
+                              // .append('<button type="button" class="btn btn-link btn-sm p-0" data-toggle="tooltip" data-placement="top" title="Tooltip on top">Tooltip on top</button>')
+                              .append($('<button>').attr('type', 'button')
+                                .addClass('btn btn-link btn-sm p-0 mr-2 text-dark btn-download')
+                                .attr('data-toggle', 'tooltip')
+                                .attr('data-placement', 'top')
+                                .attr('title', 'Download')
+                                .html($('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/></svg>')))
+                              .append($('<button>').attr('type', 'button')
+                                .addClass('btn btn-link btn-sm p-0 mr-2 text-dark btn-copy')
+                                .attr('data-toggle', 'tooltip')
+                                .attr('data-placement', 'top')
+                                .attr('title', 'Copy link')
+                                .attr('data-clipboard-text', a.url)
+                                .html($('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-files" viewBox="0 0 16 16"><path d="M13 0H6a2 2 0 0 0-2 2 2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 13V4a2 2 0 0 0-2-2H5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1zM3 4a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4z"/></svg>')))
+                              .append($('<a>').attr('type', 'button')
+                                .addClass('btn btn-link btn-sm p-0 text-dark')
+                                .attr('data-toggle', 'tooltip')
+                                .attr('data-placement', 'top')
+                                .attr('title', 'Open')
+                                .attr('href', a.url.replace('http', 'webcal'))
+                                .html($('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-plus" viewBox="0 0 16 16">   <path d="M8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5A.5.5 0 0 1 8 7z"/>   <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/> </svg>')))
+                              )
+                              
+                          })
+                        ))
                   )
-                ))
-        })
-        $('#spinner').hide()
-      }
-    });
+              ))
+          })
+
+          $('#spinner').hide();
+          
+            $('[data-toggle="tooltip"]').tooltip()
+
+            $('.btn-download').click(function(e) {
+              $(this).tooltip('hide')
+              e.preventDefault();  //stop the browser from following
+              var link = $(this).parents('li').children('a').attr('href');
+              window.location.href = link;
+            });
+
+            
+            $('.btn-copy').click(function(e) {
+              var tt = $(this).attr('aria-describedby');
+              $('#' + tt).find('.tooltip-inner').addClass('bg-success').html('Copied!');
+              $(this).tooltip('update')
+              var link = $(this).parents('li').children('a').attr('href');
+              copyToClipboard(link);
+            });
+        }
+      });
     })
-   
+
+  function copyToClipboard(text) {
+    var sampleTextarea = document.createElement("textarea");
+    document.body.appendChild(sampleTextarea);
+    sampleTextarea.value = text; //save main text in it
+    sampleTextarea.select(); //select textarea contenrs
+    document.execCommand("copy");
+    document.body.removeChild(sampleTextarea);
+}
+
+function sortByNumber(a,b){
+  var numA = parseInt(a.name.replace(/\D/g,''));
+  var numB = parseInt(b.name.replace(/\D/g,''));
+  return numA - numB;
+}
+
+
+})(jQuery);
+
+
   </script>
 </body>
 
